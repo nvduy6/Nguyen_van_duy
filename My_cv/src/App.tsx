@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import Home from './layout/Home'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      {/* <header className="App-header">
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
@@ -18,7 +16,7 @@ function App() {
           </button>
         </p>
         <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
+          Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
           <a
@@ -39,13 +37,7 @@ function App() {
             Vite Docs
           </a>
         </p>
-      </header> */}
-      <main>
-        <Routes path="/" element={<Home/>}>
-       <Route index element={<Home/>}/>
-        </Routes>
-       
-      </main>
+      </header>
     </div>
   )
 }
