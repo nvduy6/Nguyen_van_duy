@@ -28,7 +28,7 @@ const List_blog = (props: Props) => {
                         <tbody className="bg-white">\
                             {props.blog.map((item, index) => {
                                 return (
-                                    <tr id="product">
+                                    <tr id="product" key={index}>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-500">{index + 1}</div>
                                         </td>
@@ -41,8 +41,9 @@ const List_blog = (props: Props) => {
                                         </td>
                                         <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
 
-                                            <button><Link to={`/admin/blog/${item._id}/edit`}>Update</Link></button>
-                                            <button onClick={() => props.onRemoveBlog(item._id)}>Delete</button>
+                                            <button><Link to={`/admin/blog/${item.id}/edit`}>Update</Link></button>
+                                        
+                                            <button className='ml-2 bg-red-500 text-gray-50' onClick={() => props.onRemoveBlog(item.id)}>Delete</button>
                                         </td>
 
 

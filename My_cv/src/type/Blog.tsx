@@ -1,5 +1,5 @@
 export interface IpBlog{
-    _id?:number,
+    id?:number,
     name:string,
     desc:string
 }

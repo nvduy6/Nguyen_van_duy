@@ -12,7 +12,8 @@ import List_skill from './page/Skill/List_skill';
 import Add_skill from './page/Skill/Add_skill';
 import Update_skill from './page/Skill/Update_skill';
 import { IpBlog } from './type/Blog';
-import { addBlog, listBlog } from './api/blog';
+import { addBlog, listBlog ,removeBlog, update } from './api/blog';
+import axios from 'axios';
 function App() {
   const [count, setCount] = useState(0)
 const [blogs,setBlogs] = useState<IpBlog[]>([]);
@@ -28,8 +29,12 @@ const onHandlerBlog = async (blog:IpBlog)=>{
   setBlogs([...blogs,data]);
 }
 const removeBlog = (id:number)=>{
-  removeBlog(id)
-  setBlogs(blogs.filter(item=>item._id!==id))
+  removeBlog(id);
+  setBlogs(blogs.filter(item=>item.id!==id))
+}
+const onHandeleUpdateBlog = async (Blog:IpBlog)=>{
+  const {data} = await update(Blog);
+  setBlogs(blogs.map(item=>item.id == data.id? data:item));
 }
   return (
     <div className="App">
@@ -40,7 +45,7 @@ const removeBlog = (id:number)=>{
             <Route path='blog'>
               <Route index element={<List_blog blog={blogs} onRemoveBlog={removeBlog} />} />
               <Route path='add' element={<Add_blog onAddBlog={onHandlerBlog}/>} />
-              <Route path=':id/edit' element={<Update_blog />} />
+              <Route path=':id/edit' element={<Update_blog onUpdateBlog={onHandeleUpdateBlog} />} />
             </Route>
             <Route path='skill'>
               <Route index element={<List_skill />} />
