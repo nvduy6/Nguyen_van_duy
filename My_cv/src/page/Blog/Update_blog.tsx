@@ -15,7 +15,7 @@ useEffect(()=>{
   const getBlogs = async ()=>{
     const {data} = await read(id);
     reset(data);
-    setblogs(data)
+    // setblogs(data)
   }
   getBlogs()
 },[])
@@ -25,7 +25,7 @@ const onSubmit:SubmitHandler<IpBlog> = data => {
 }
   return (
     <div><div className=" mt-5 md:mt-0 md:col-span-2">
-    <form onSubmit={handleSubmit(onSubmit)} id="form-add-post">
+    <form onSubmit={handleSubmit(onSubmit)}>
         <div className="shadow sm:rounded-md sm:overflow-hidden">
             <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div className="grid grid-cols-3 gap-6">
@@ -34,7 +34,7 @@ const onSubmit:SubmitHandler<IpBlog> = data => {
                             Tên sản phẩm
                         </label>
                         <div className="mt-1 flex rounded-md shadow-sm">
-                            <input type="text" {...register('name')} name="company-website" id="title-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Mời bạn nhập tên sản phẩm" />
+                            <input type="text" {...register('name')}  id="title-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Mời bạn nhập tên sản phẩm" />
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const onSubmit:SubmitHandler<IpBlog> = data => {
                         Chi tiết
                     </label>
                     <div className="mt-1">
-                        <textarea id="desc-post" {...register('desc')} name="about" rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Chi tiết..." defaultValue={""} />
+                        <textarea id="desc-post" {...register('desc')}  rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Chi tiết..." defaultValue={""} />
                     </div>
                 </div>
                 {/* <div>

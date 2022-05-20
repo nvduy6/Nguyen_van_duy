@@ -28,7 +28,7 @@ const onHandlerBlog = async (blog:IpBlog)=>{
   const {data}= await addBlog(blog);
   setBlogs([...blogs,data]);
 }
-const removeBlog = (id:number)=>{
+const onHandeleRemoveBlog = (id:number)=>{
   removeBlog(id);
   setBlogs(blogs.filter(item=>item.id!==id))
 }
@@ -43,7 +43,7 @@ const onHandeleUpdateBlog = async (Blog:IpBlog)=>{
           <Route path='/' element={<Home />}></Route>
           <Route path='admin' element={<Admin />}>
             <Route path='blog'>
-              <Route index element={<List_blog blog={blogs} onRemoveBlog={removeBlog} />} />
+              <Route index element={<List_blog blog={blogs} onRemoveBlog={onHandeleRemoveBlog} />} />
               <Route path='add' element={<Add_blog onAddBlog={onHandlerBlog}/>} />
               <Route path=':id/edit' element={<Update_blog onUpdateBlog={onHandeleUpdateBlog} />} />
             </Route>
