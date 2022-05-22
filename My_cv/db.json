@@ -14,5 +14,13 @@
       "progr": "1234",
       "id": 1
     }
+  ],
+  "Skills": [
+    {
+      "title": "asdsfdgfh",
+      "desc": "sdfsffsf",
+      "image": "https://i.pinimg.com/originals/2e/f0/86/2ef086033e321d78e9bbd2cd06083fa4.jpg",
+      "id": 1
+    }
   ]
 }
