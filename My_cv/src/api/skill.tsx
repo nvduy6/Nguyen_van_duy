@@ -18,5 +18,5 @@ export const readSkill =(id:string|undefined)=>{
 }
 export const updateSkill =(skill:Iskill)=>{
     const url = `/skills/${skill.id}`;
-    return instance.put(url)
+    return instance.put(url,skill)
 }
