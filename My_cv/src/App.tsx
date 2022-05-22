@@ -14,13 +14,16 @@ import Update_skill from './page/Skill/Update_skill';
 import { IpBlog } from './type/Blog';
 import { addBlog, listBlog ,removeBlog, update } from './api/blog';
 import axios from 'axios';
-import { addAbout, listAbout, removeAbout } from './api/about';
+import { addAbout, listAbout, removeAbout, UpdateAbout } from './api/about';
 import { IPAbout } from './type/About';
 import List_about from './page/About/List_about';
+import Add_about from './page/About/Add_about';
+import Update_about from './page/About/Update_about';
+import { Item } from 'rc-menu';
 function App() {
   const [count, setCount] = useState(0)
 const [blogs,setBlogs] = useState<IpBlog[]>([]);
-const [abouts,setAbout] = useState<IpBlog[]>([]);
+const [abouts,setAbout] = useState<IPAbout[]>([]);
 useEffect (()=>{
   const getBlog = async ()=>{
     const {data} = await listBlog();
@@ -56,6 +59,10 @@ const onHandeleAddAbout = async(about:IPAbout)=>{
   const {data}= await addAbout(about);
   setAbout([...abouts,data])
 }
+const onHandeleUpdateAbout =async (about:IPAbout)=>{
+  const {data} = await UpdateAbout(about);
+  setAbout(abouts.map(item=>item.id == data.id? data:item))
+}
   return (
     <div className="App">
       <main>
@@ -74,8 +81,8 @@ const onHandeleAddAbout = async(about:IPAbout)=>{
             </Route>
             <Route path='about'>
               <Route index element={<List_about about={abouts} onRemoveAbout={onHandeleRemoveAbout} />} />
-              <Route path='skill/add' element={<Add_skill />} />
-              <Route path='skill/:id/edit' element={<Update_skill />} />
+              <Route path='add' element={<Add_about onAddAbout={onHandeleAddAbout} />} />
+              <Route path=':id/edit' element={<Update_about onUpdateAbut={onHandeleUpdateAbout} />} />
             </Route>
           </Route>
         </Routes>

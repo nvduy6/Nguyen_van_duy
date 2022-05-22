@@ -8,7 +8,7 @@ export const addAbout=(about:IPAbout)=>{
     const url="/about";
     return instance.post(url,about);
 }
-export const getAbout=(id:string|number)=>{
+export const readAbout=(id:string|undefined)=>{
     const url = `/about/${id}`;
     return instance.get(url);
 }
