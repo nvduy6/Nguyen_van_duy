@@ -14,9 +14,13 @@ import Update_skill from './page/Skill/Update_skill';
 import { IpBlog } from './type/Blog';
 import { addBlog, listBlog ,removeBlog, update } from './api/blog';
 import axios from 'axios';
+import { addAbout, listAbout, removeAbout } from './api/about';
+import { IPAbout } from './type/About';
+import List_about from './page/About/List_about';
 function App() {
   const [count, setCount] = useState(0)
 const [blogs,setBlogs] = useState<IpBlog[]>([]);
+const [abouts,setAbout] = useState<IpBlog[]>([]);
 useEffect (()=>{
   const getBlog = async ()=>{
     const {data} = await listBlog();
@@ -36,6 +40,22 @@ const onHandeleUpdateBlog = async (Blog:IpBlog)=>{
   const {data} = await update(Blog);
   setBlogs(blogs.map(item=>item.id == data.id? data:item));
 }
+
+useEffect(()=>{
+  const getAbout = async()=>{
+    const {data} =await listAbout();
+    setAbout(data);
+  }
+  getAbout()
+},[])
+const onHandeleRemoveAbout = (id:number)=>{
+  removeAbout(id);
+  setAbout(abouts.filter(item=>item.id!==id));
+}
+const onHandeleAddAbout = async(about:IPAbout)=>{
+  const {data}= await addAbout(about);
+  setAbout([...abouts,data])
+}
   return (
     <div className="App">
       <main>
@@ -49,6 +69,11 @@ const onHandeleUpdateBlog = async (Blog:IpBlog)=>{
             </Route>
             <Route path='skill'>
               <Route index element={<List_skill />} />
+              <Route path='skill/add' element={<Add_skill />} />
+              <Route path='skill/:id/edit' element={<Update_skill />} />
+            </Route>
+            <Route path='about'>
+              <Route index element={<List_about about={abouts} onRemoveAbout={onHandeleRemoveAbout} />} />
               <Route path='skill/add' element={<Add_skill />} />
               <Route path='skill/:id/edit' element={<Update_skill />} />
             </Route>
