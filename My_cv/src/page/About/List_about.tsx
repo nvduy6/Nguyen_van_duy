@@ -38,7 +38,7 @@ const List_about = (props:Props) => {
                                         </td>
 
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <div className="text-sm leading-5 text-gray-500">{item.title}</div>
+                                            <img src={item.image} alt="" />
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-500">{item.desc}</div>
@@ -46,9 +46,7 @@ const List_about = (props:Props) => {
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-500">{item.name}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <div className="text-sm leading-5 text-gray-500">{item.progr}</div>
-                                        </td>
+                                       
                                         <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
 
                                             <button><Link to={`/admin/about/${item.id}/edit`}>Update</Link></button>

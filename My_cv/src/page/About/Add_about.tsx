@@ -25,7 +25,7 @@ const Add_about = (props: Props) => {
                     Tiêu đề
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
-                    <input type="text"  {...register('title')} id="title-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Mời bạn nhập tên sản phẩm" />
+                    <input type="text"  {...register('image')} id="title-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Mời bạn nhập tên sản phẩm" />
                   </div>
                 </div>
               </div>
@@ -45,14 +45,6 @@ const Add_about = (props: Props) => {
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input type="text"  {...register('name')} id="title-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Mời bạn nhập tên sản phẩm" />
                   </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                phần trăm
-                </label>
-                <div className="mt-1">
-                  <input type="number" {...register('progr')} id="price-post" className="focus:ring-indigo-500 focus:border-indigo-800 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Giá sản phẩm" />
                 </div>
               </div>
               {/* <div className="grid grid-cols-2 gap-2">
